@@ -25,6 +25,11 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
  */
 
 export default function nonUniqueElements(data) {
-  // your solution goes here
+  for (var i = 0; i < data.length; i++){
+  	if (data.indexOf(data[i]) === data.lastIndexOf(data[i])){
+  		data.splice(i, 1);
+  		i--;
+  	}
+  }
   return data
 }

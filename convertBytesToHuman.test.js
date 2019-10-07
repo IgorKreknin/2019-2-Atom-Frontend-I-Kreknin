@@ -9,14 +9,20 @@
 
 import convertBytesToHuman from './convertBytesToHuman';
 
-test('Возвращает false для неправильного типа данных', () => {
-  expect(convertBytesToHuman(/* ... */)).toBe(/* ... */)
-  // ...
+test('Returns false for invalid types', () => {
+  expect(convertBytesToHuman(-12)).toBe(false);
+  expect(convertBytesToHuman("Bytes")).toBe(false)
+  expect(convertBytesToHuman("12324234 B")).toBe(false)
+  expect(convertBytesToHuman(true)).toBe(false)
 });
 
-test('Возвращает корректное значение для чисел', () => {
-  expect(convertBytesToHuman(/* ... */)).toBe(/* ... */)
-  // ...
+test('Returns correct value', () => {
+  expect(convertBytesToHuman(145)).toBe("145 B")
+  expect(convertBytesToHuman(1024)).toBe("1.00 KB")
+  expect(convertBytesToHuman(102400)).toBe("100.00 KB")
+  expect(convertBytesToHuman(58982400)).toBe("56.25 MB")
+  expect(convertBytesToHuman(23443289689)).toBe("21.83 GB")
 });
+
 
 // другая группа проверок
