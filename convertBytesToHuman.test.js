@@ -24,4 +24,3 @@ test('Returns correct value', () => {
   expect(convertBytesToHuman(23443289689)).toBe("21.83 GB")
 });
 
-
