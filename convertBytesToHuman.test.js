@@ -25,4 +25,3 @@ test('Returns correct value', () => {
 });
 
 
-// другая группа проверок
