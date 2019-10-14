@@ -15,7 +15,7 @@ template.innerHTML = `
 `;
 
 class FormInput extends HTMLElement {
-    constructor () {
+    constructor() {
         super();
         this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._shadowRoot.appendChild(template.content.cloneNode(true));

@@ -52,7 +52,7 @@ template.innerHTML = `
 `;
 
 class MessageForm extends HTMLElement {
-    constructor () {
+    constructor() {
         super();
         this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._shadowRoot.appendChild(template.content.cloneNode(true));
@@ -63,12 +63,11 @@ class MessageForm extends HTMLElement {
         this.items = localStorage.getItem('items');
         if (this.items === null) this.items = 0;
 
-        //Подгружаем сообщения из localStorae
-        for (let i = 0; i < this.items; i++){
-            let message = document.createElement('div');
-            let messageText = document.createElement('div');
-            let messageTime = document.createElement('div');
-            let data = JSON.parse(localStorage.getItem(i));
+        for (let i = 0; i < this.items; i += 1) {
+            const message = document.createElement('div');
+            const messageText = document.createElement('div');
+            const messageTime = document.createElement('div');
+            const data = JSON.parse(localStorage.getItem(i));
             message.className = 'message';
             messageText.innerText = data.text;
             messageText.className = 'message-text';
@@ -84,18 +83,16 @@ class MessageForm extends HTMLElement {
         this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
     }
 
-    putCopyOnStore (data) {
-        //data - структура, хранящая время, сообщение и имя пользователя. Закидываем всё в json и в localStorage
+    putCopyOnStore(data) {
         localStorage.setItem(this.items, JSON.stringify(data));
         this.items = Number(this.items) + 1;
         localStorage.setItem('items', this.items);
     }
 
-    craeteDiv (data) {
-        //Собираем div сообщения
-        var message = document.createElement('div');
-        var messageText = document.createElement('div');
-        var messageTime = document.createElement('div');
+    craeteDiv(data) {
+        const message = document.createElement('div');
+        const messageText = document.createElement('div');
+        const messageTime = document.createElement('div');
         message.className = 'message';
         messageText.innerText = data.text;
         messageText.className = 'message-text';
@@ -107,21 +104,21 @@ class MessageForm extends HTMLElement {
         return message;
     }
 
-    _onSubmit (event) {
+    _onSubmit(event) {
         event.preventDefault();
-        let data = {};
-        let currentTime = new Date();
-        data.time = currentTime.getHours() + ':' + currentTime.getMinutes();
+        const data = {};
+        const currentTime = new Date();
+        data.time = `${currentTime.getHours()}:${currentTime.getMinutes()}`;
         data.text = this.$input.value;
         if (data.text === '') return;
-        data.name = 'User'; //Пока не используется
+        data.name = 'User';
         this.$message.append(this.craeteDiv(data));
-        window.scrollTo(0, this.$message.scrollHeight)
+        window.scrollTo(0, this.$message.scrollHeight);
         this.$input._shadowRoot.querySelector('input').value = '';
     }
 
-    _onKeyPress (event) {
-        if (event.keyCode == 13) {
+    _onKeyPress(event) {
+        if (event.keyCode === 13) {
             this.$form.dispatchEvent(new Event('submit'));
         }
     }
