@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "test": "node_modules/.bin/eslint ./src",
-    "start": "webpack-dev-server --mode=development --hot",
+    "deploy": "webpack-dev-server --mode=development --hot",
     "build": "webpack --mode=development"
   },
   "devDependencies": {
