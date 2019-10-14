@@ -3,8 +3,9 @@ template.innerHTML = `
     <style>
         input {
             border: 1px solid #e5e5e5;
+            padding-left: 12px;
             outline: none;
-            width: calc(30vw - 2px);
+            width: calc(30vw - 14px);
             bottom: 2px;
             position: fixed;
             height: 40px;
