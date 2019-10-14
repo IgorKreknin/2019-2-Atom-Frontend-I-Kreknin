@@ -2,14 +2,13 @@ const template = document.createElement('template');
 template.innerHTML = `
     <style>
         input {
-            border: 0;
+            border: 1px solid #e5e5e5;
             outline: none;
             width: calc(100% - 2px);
-        }
-
-        :host {
-            display: inline-block;
-            border: 1px solid rgba(25, 25, 25, 0.32);
+            bottom: 2px;
+            position: fixed;
+            height: 40px;
+            font-size: 16px;
         }
     </style>
     <input type="text">
