@@ -4,7 +4,7 @@ template.innerHTML = `
         input {
             border: 1px solid #e5e5e5;
             outline: none;
-            width: calc(100% - 2px);
+            width: calc(30vw - 2px);
             bottom: 2px;
             position: fixed;
             height: 40px;
