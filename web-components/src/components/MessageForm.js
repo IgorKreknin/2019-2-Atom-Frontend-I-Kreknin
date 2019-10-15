@@ -2,7 +2,7 @@ const template = document.createElement('template');
 template.innerHTML = `
     <style>
         form-input {
-            width: 1000%;
+            width: 100%;
         }
 
         .result {
@@ -43,7 +43,7 @@ class MessageForm extends HTMLElement {
         this.$form = this._shadowRoot.querySelector('form');
         this.$input = this._shadowRoot.querySelector('form-input');
         this.$message = this._shadowRoot.querySelector('.result');
-        this.items = Number(localStorage.getItem('items'));
+        this.messages = JSON.parse(localStorage.getItem('messages'));
 
         this.$form.addEventListener('submit', this._onSubmit.bind(this));
         this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
@@ -51,13 +51,13 @@ class MessageForm extends HTMLElement {
     }
 
     putCopyOnStore(data) {
-        localStorage.setItem(this.items, JSON.stringify(data));
-        this.items = Number(this.items) + 1;
-        localStorage.setItem('items', this.items);
+        if (this.messages === null) this.messages = [];
+        this.messages.push(data);
+        localStorage.setItem('messages', JSON.stringify(this.messages));
     }
 
     craeteDiv(data) {
-        let currentMessage = document.createElement('message-pattern');
+        const currentMessage = document.createElement('message-pattern');
         currentMessage.$text.innerText = data.text;
         currentMessage.$time.innerText = data.time;
         this.putCopyOnStore(data);
@@ -83,13 +83,10 @@ class MessageForm extends HTMLElement {
         }
     }
 
-    _onDOMLoaded(event) {
-        const items = localStorage.getItem('items');
-        if (items === null) items = 0;
-
-        for (let i = 0; i < items; i += 1) {
-            let currentMessage = document.createElement('message-pattern');
-            const data = JSON.parse(localStorage.getItem(i));
+    _onDOMLoaded() {
+        for (let i = 0; i < this.messages.length; i += 1) {
+            const currentMessage = document.createElement('message-pattern');
+            const data = this.messages[i];
             currentMessage.$text.innerText = data.text;
             currentMessage.$time.innerText = data.time;
             this.$message.append(currentMessage);

@@ -15,7 +15,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "indent": 0,
-        "no-underscore-dangle": 0
+	"indent": 0,
+	"no-underscore-dangle": 0
     }
 }

@@ -34,7 +34,6 @@ class Message extends HTMLElement {
         this.$text = this._shadowRoot.querySelector('.message-text');
         this.$time = this._shadowRoot.querySelector('.message-time');
     }
-    
 }
 
 customElements.define('message-pattern', Message);
