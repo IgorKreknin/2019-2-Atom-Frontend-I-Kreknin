@@ -20,29 +20,13 @@ template.innerHTML = `
             display: none;
         }
 
-        .message {
-            background: #f3e5f5;
-            margin: 5px;
-            padding: 5px 10px 5px 10px;
+        message-pattern {
             flex: 0 1 auto;
             max-width: 70%;
-            border-radius: 10px;
         }
 
         input[type=submit] {
             visibility: collapse;
-        }
-
-        .message-text {
-            word-break: break-all;
-            text-align: left;
-        }
-
-        .message-time {
-            color: #898989;
-            bottom: 0px;
-            text-align: right;
-            font-size: 10px;
         }
     </style>
     <form>
@@ -59,28 +43,11 @@ class MessageForm extends HTMLElement {
         this.$form = this._shadowRoot.querySelector('form');
         this.$input = this._shadowRoot.querySelector('form-input');
         this.$message = this._shadowRoot.querySelector('.result');
-
-        this.items = localStorage.getItem('items');
-        if (this.items === null) this.items = 0;
-
-        for (let i = 0; i < this.items; i += 1) {
-            const message = document.createElement('div');
-            const messageText = document.createElement('div');
-            const messageTime = document.createElement('div');
-            const data = JSON.parse(localStorage.getItem(i));
-            message.className = 'message';
-            messageText.innerText = data.text;
-            messageText.className = 'message-text';
-            messageTime.innerText = data.time;
-            messageTime.className = 'message-time';
-            message.append(messageText);
-            message.append(messageTime);
-            this.$message.append(message);
-            window.scrollTo(0, this.$message.scrollHeight);
-        }
+        this.items = Number(localStorage.getItem('items'));
 
         this.$form.addEventListener('submit', this._onSubmit.bind(this));
         this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
+        document.addEventListener('DOMContentLoaded', this._onDOMLoaded.bind(this));
     }
 
     putCopyOnStore(data) {
@@ -90,18 +57,11 @@ class MessageForm extends HTMLElement {
     }
 
     craeteDiv(data) {
-        const message = document.createElement('div');
-        const messageText = document.createElement('div');
-        const messageTime = document.createElement('div');
-        message.className = 'message';
-        messageText.innerText = data.text;
-        messageText.className = 'message-text';
-        messageTime.innerText = data.time;
-        messageTime.className = 'message-time';
-        message.append(messageText);
-        message.append(messageTime);
+        let currentMessage = document.createElement('message-pattern');
+        currentMessage.$text.innerText = data.text;
+        currentMessage.$time.innerText = data.time;
         this.putCopyOnStore(data);
-        return message;
+        return currentMessage;
     }
 
     _onSubmit(event) {
@@ -120,6 +80,19 @@ class MessageForm extends HTMLElement {
     _onKeyPress(event) {
         if (event.keyCode === 13) {
             this.$form.dispatchEvent(new Event('submit'));
+        }
+    }
+
+    _onDOMLoaded(event) {
+        const items = localStorage.getItem('items');
+        if (items === null) items = 0;
+
+        for (let i = 0; i < items; i += 1) {
+            let currentMessage = document.createElement('message-pattern');
+            const data = JSON.parse(localStorage.getItem(i));
+            currentMessage.$text.innerText = data.text;
+            currentMessage.$time.innerText = data.time;
+            this.$message.append(currentMessage);
         }
     }
 }
