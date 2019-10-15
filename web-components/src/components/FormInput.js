@@ -11,6 +11,12 @@ template.innerHTML = `
             height: 40px;
             font-size: 16px;
         }
+
+        @media handheld {
+            input {
+                width: calc(100vw - 14px);
+            }
+        }
     </style>
     <input type="text">
 `;

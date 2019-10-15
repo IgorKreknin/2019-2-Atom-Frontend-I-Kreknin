@@ -29,3 +29,13 @@ header {
     width: 30vw;
     background: #8e24aa;
 }
+
+@media handheld {
+    header {
+        width: 100vw;
+    }
+
+    body {
+        width: 100vw;
+    }
+}
