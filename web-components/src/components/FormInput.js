@@ -14,7 +14,7 @@ template.innerHTML = `
 
         @media handheld {
             input {
-                width: calc(100vw - 14px);
+                width: calc(100% - 14px);
             }
         }
     </style>
