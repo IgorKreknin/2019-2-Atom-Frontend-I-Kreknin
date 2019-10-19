@@ -73,6 +73,8 @@ module.exports = {
         new HTMLWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
+        }),
+        new HTMLWebpackPlugin({
             filename: 'chat.html',
             template: './chat.html',
         }),
