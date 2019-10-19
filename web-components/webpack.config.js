@@ -62,7 +62,9 @@ module.exports = {
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',
-            template: './index.html'
+            template: './index.html',
+            filename: 'chat.html',
+            template: './chat.html',
         })
     ]
 };
