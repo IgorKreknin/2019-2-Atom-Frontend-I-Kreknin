@@ -35,26 +35,26 @@ class Button extends HTMLElement {
 
     _onClick() {
         const name = prompt('Название нового чата: ');
-        if (name === null || name === "") return;
+        if (name === null || name === '') return;
         const date = new Date();
         const key = `${date.getFullYear()}${date.getMonth()}${date.getDay()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
         const chatAbout = {
-            "key": key,
-            "name": name,
+            key,
+            name,
         };
         const chat = {
-            "messages": [],
-            "lastMessage": 'Этот чат пока пуст :(',
-            "lastMessageTime": `${currentTime.getHours() > 9 ? currentTime.getHours() : `0${currentTime.getHours()}`
-                                    }:${currentTime.getMinutes() > 9 ? currentTime.getMinutes() : `0${currentTime.getMinutes()}`}`.replace('\n', ''),
-            "name": name,
-        }
+            messages: [],
+            lastMessage: 'Этот чат пока пуст :(',
+            lastMessageTime: `${date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`
+                                    }:${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`.replace('\n', ''),
+            name,
+        };
         localStorage.setItem(key, JSON.stringify(chat));
         let chats = JSON.parse(localStorage.getItem('chats'));
         if (chats === null) chats = [];
         chats.push(chatAbout);
         localStorage.setItem('chats', JSON.stringify(chats));
-        document.dispatchEvent(new Event("NewChat"));
+        document.dispatchEvent(new Event('NewChat'));
     }
 }
 

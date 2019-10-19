@@ -28,11 +28,11 @@ class ChatContainer extends HTMLElement {
 
     _onDOMLoaded() {
         const chats = JSON.parse(localStorage.getItem('chats'));
-        for (var i = 0; i < chats.length; i+=1) {
-            let chat = document.createElement('chat-item');
+        for (let i = 0; i < chats.length; i += 1) {
+            const chat = document.createElement('chat-item');
             chat.key = chats[i].key;
             chat.$name.innerText = chats[i].name;
-            let data = JSON.parse(localStorage.getItem(chats[i].key));
+            const data = JSON.parse(localStorage.getItem(chats[i].key));
             chat.$time.innerText = data.lastMessageTime;
             chat.$lastMessage.innerText = data.lastMessage;
             this.$container.append(chat);
@@ -42,12 +42,12 @@ class ChatContainer extends HTMLElement {
     _onNewChat(event) {
         event.preventDefault();
         const chats = JSON.parse(localStorage.getItem('chats'));
-        var chat = document.createElement('chat-item');
+        const chat = document.createElement('chat-item');
         chat.key = chats[chats.length - 1].key;
         chat.$name.innerText = chats[chats.length - 1].name;
-        let data = JSON.parse(localStorage.getItem(chats[chats.length - 1].key));
+        const data = JSON.parse(localStorage.getItem(chats[chats.length - 1].key));
         chat.$time.innerText = data.lastMessageTime;
-        chat.$lastMessage.innerText = data.lastMessage; 
+        chat.$lastMessage.innerText = data.lastMessage;
         this.$container.append(chat);
     }
 }
