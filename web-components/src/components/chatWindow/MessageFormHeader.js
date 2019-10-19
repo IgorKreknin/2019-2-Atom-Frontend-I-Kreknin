@@ -102,7 +102,7 @@ class Header extends HTMLElement {
     }
 
     _onClickBack() {
-        document.location.replace(`${document.location.href.replace(/chat.html.+/g)}index.html`);
+        document.location.replace(`${document.location.href.replace(/chat\.html.+/)}index.html`);
     }
 
     _onClickMenu() {
