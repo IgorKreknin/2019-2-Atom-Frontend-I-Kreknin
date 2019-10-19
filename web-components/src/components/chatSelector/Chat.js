@@ -91,7 +91,7 @@ class Chat extends HTMLElement {
     }
 
     _onClick() {
-        document.location.replace(`${document.location.protocol}//${document.location.host}/chat.html?${this.key}`);
+        document.location.replace(`${document.location.protocol.replace('index.html', '')}chat.html?${this.key}`);
     }
 }
 
