@@ -39,7 +39,7 @@ template.innerHTML = `
         <div class="burger">
             <img src="img/burger.svg" />
         </div>
-        <div class="title">Messanger</div>
+        <div class="title">Messager</div>
         <div class="search">
             <img src="img/search.svg" />
         </div>
