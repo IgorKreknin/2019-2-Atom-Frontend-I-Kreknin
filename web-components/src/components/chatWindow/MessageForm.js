@@ -43,7 +43,8 @@ class MessageForm extends HTMLElement {
         this.$form = this._shadowRoot.querySelector('form');
         this.$input = this._shadowRoot.querySelector('form-input');
         this.$message = this._shadowRoot.querySelector('.result');
-        this.messages = JSON.parse(localStorage.getItem('messages'));
+        this.key = document.location.search.replace('?', '');
+        this.data = JSON.parse(localStorage.getItem(this.key));
 
         this.$form.addEventListener('submit', this._onSubmit.bind(this));
         this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
@@ -51,9 +52,10 @@ class MessageForm extends HTMLElement {
     }
 
     putCopyOnStore(data) {
-        if (this.messages === null) this.messages = [];
-        this.messages.push(data);
-        localStorage.setItem('messages', JSON.stringify(this.messages));
+        this.data.messages.push(data);
+        this.data.lastMessage = data.text;
+        this.data.lastMessageTime = data.time;
+        localStorage.setItem(this.key, JSON.stringify(this.data));
     }
 
     craeteDiv(data) {
@@ -68,7 +70,8 @@ class MessageForm extends HTMLElement {
         event.preventDefault();
         const data = {};
         const currentTime = new Date();
-        data.time = `${currentTime.getHours()}:${currentTime.getMinutes()}`;
+        data.time = `${currentTime.getHours() > 9 ? currentTime.getHours() : `0${currentTime.getHours()}`
+                        }:${currentTime.getMinutes() > 9 ? currentTime.getMinutes() : `0${currentTime.getMinutes()}`}`;
         data.text = this.$input.value;
         if (data.text === '') return;
         data.name = 'User';
@@ -84,9 +87,10 @@ class MessageForm extends HTMLElement {
     }
 
     _onDOMLoaded() {
-        for (let i = 0; i < this.messages.length; i += 1) {
+        document.querySelector('message-form-header').$name.innerText = this.data.name;
+        for (let i = 0; i < this.data.messages.length; i += 1) {
             const currentMessage = document.createElement('message-pattern');
-            const data = this.messages[i];
+            const data = this.data.messages[i];
             currentMessage.$text.innerText = data.text;
             currentMessage.$time.innerText = data.time;
             this.$message.append(currentMessage);
