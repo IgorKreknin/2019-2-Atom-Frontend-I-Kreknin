@@ -139,6 +139,7 @@ class Header extends HTMLElement {
     }
 
     _onChatContainerIsReady() {
+        this.$name.innerText = "Messager";
         this.$photo.style.display = 'none';
         this.$menu.style.display = 'none';
         this.$back.style.display = 'none';
