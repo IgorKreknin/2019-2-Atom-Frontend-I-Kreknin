@@ -74,10 +74,6 @@ module.exports = {
             filename: 'index.html',
             template: './index.html',
         }),
-        new HTMLWebpackPlugin({
-            filename: 'chat.html',
-            template: './chat.html',
-        }),
         new CopyWebpaPlugin([{
             from: './img',
             to: 'img',

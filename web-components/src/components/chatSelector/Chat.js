@@ -91,7 +91,9 @@ class Chat extends HTMLElement {
     }
 
     _onClick() {
-        document.location.replace(`${document.location.href.replace('index.html', '')}chat.html?${this.key}`);
+        document.dispatchEvent(new CustomEvent('clickOnChat', {
+            detail: { key: this.key },
+        }));
     }
 }
 

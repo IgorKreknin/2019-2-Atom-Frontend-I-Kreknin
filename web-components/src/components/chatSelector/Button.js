@@ -31,6 +31,8 @@ class Button extends HTMLElement {
         this.$button = this._shadowRoot.querySelector('.button');
 
         this.$button.addEventListener('click', this._onClick.bind(this));
+        document.addEventListener('messageFormIsReady', this._onMessageFormReady.bind(this));
+        document.addEventListener('backToChatSelector', this._onBackToChatSelector.bind(this));
     }
 
     _onClick() {
@@ -55,6 +57,14 @@ class Button extends HTMLElement {
         chats.push(chatAbout);
         localStorage.setItem('chats', JSON.stringify(chats));
         document.dispatchEvent(new Event('NewChat'));
+    }
+
+    _onMessageFormReady() {
+        this.style.display = 'none';
+    }
+
+    _onBackToChatSelector() {
+        this.style.display = 'block';
     }
 }
 

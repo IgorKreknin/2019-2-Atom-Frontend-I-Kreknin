@@ -32,6 +32,7 @@ template.innerHTML = `
 
         }
         .menu {
+            display: none;
             flex: 0 1 auto;
             width: 60px;
             height: 60px;
@@ -39,12 +40,14 @@ template.innerHTML = `
 
         }
         .back {
+            display: none;
             flex: 0 1 auto;
             width: 60px;
             height: 60px;
             cursor: pointer;
         }
         .photo {
+            display: none;
             flex: 0 1 auto;
             background-color: #ffd54f;
             height: 50px;
@@ -56,6 +59,12 @@ template.innerHTML = `
             margin-left: 0;
             margin-right: 0;
         }
+        .burger {
+            flex: 0 1 auto;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
         img {
             height: 35%;
             width: 35%;
@@ -63,12 +72,15 @@ template.innerHTML = `
         }
     </style>
     <div class="header">
+        <div class="burger">
+            <img src="img/burger.svg" />
+        </div>
         <div class="back">
             <img src="img/back.svg" />
         </div>
         <div class="title">
             <img src="img/photo.svg" class="photo" />
-            <div class="name"></div>
+            <div class="name">Messager</div>
         </div>
         <div class="search">
             <img src="img/search.svg" />
@@ -91,10 +103,15 @@ class Header extends HTMLElement {
         this.$name = this._shadowRoot.querySelector('.name');
         this.$search = this._shadowRoot.querySelector('.search');
         this.$menu = this._shadowRoot.querySelector('.menu');
+        this.$burger = this._shadowRoot.querySelector('.burger');
+        this.$photo = this._shadowRoot.querySelector('.photo');
 
         this.$back.addEventListener('click', this._onClickBack.bind(this));
         this.$search.addEventListener('click', this._onClickSearch.bind(this));
         this.$menu.addEventListener('click', this._onClickMenu.bind(this));
+        this.$burger.addEventListener('click', this._onClickBurger.bind(this));
+        document.addEventListener('messageFormIsReady', this._onMessageFormReady.bind(this));
+        document.addEventListener('chatContainerIsReady', this._onChatContainerIsReady.bind(this));
     }
 
     _onClickSearch() {
@@ -102,12 +119,31 @@ class Header extends HTMLElement {
     }
 
     _onClickBack() {
-        document.location.href = document.location.href.replace(/chat\.html.+/g, 'index.html');
+        document.dispatchEvent(new Event('backToChatSelector'));
     }
 
     _onClickMenu() {
         console.log('Modal window');
     }
+
+    _onClickBurger() {
+        console.log('Burger !!!!');
+    }
+
+    _onMessageFormReady(event) {
+        this.$name.innerText = event.detail.name;
+        this.$photo.style.display = 'block';
+        this.$menu.style.display = 'block';
+        this.$back.style.display = 'block';
+        this.$burger.style.display = 'none';
+    }
+
+    _onChatContainerIsReady() {
+        this.$photo.style.display = 'none';
+        this.$menu.style.display = 'none';
+        this.$back.style.display = 'none';
+        this.$burger.style.display = 'block';
+    }
 }
 
-customElements.define('message-form-header', Header);
+customElements.define('custom-header', Header);

@@ -20,6 +20,10 @@ body {
     width: 100%;
 }
 
+message-form{
+    display: none;
+}
+
 header {
     position: fixed;
     top: 0px;

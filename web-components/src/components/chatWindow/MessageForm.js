@@ -43,12 +43,13 @@ class MessageForm extends HTMLElement {
         this.$form = this._shadowRoot.querySelector('form');
         this.$input = this._shadowRoot.querySelector('form-input');
         this.$message = this._shadowRoot.querySelector('.result');
-        this.key = document.location.search.replace('?', '');
+        this.key = 0;
         this.data = JSON.parse(localStorage.getItem(this.key));
 
         this.$form.addEventListener('submit', this._onSubmit.bind(this));
         this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
-        document.addEventListener('DOMContentLoaded', this._onDOMLoaded.bind(this));
+        document.addEventListener('clickOnChat', this._onClickOnChat.bind(this));
+        document.addEventListener('chatContainerIsReady', this._onChatContainerIsReady.bind(this));
     }
 
     putCopyOnStore(data) {
@@ -86,8 +87,9 @@ class MessageForm extends HTMLElement {
         }
     }
 
-    _onDOMLoaded() {
-        document.querySelector('message-form-header').$name.innerText = this.data.name;
+    _onClickOnChat(event) {
+        this.key = event.detail.key;
+        this.data = JSON.parse(localStorage.getItem(this.key));
         for (let i = 0; i < this.data.messages.length; i += 1) {
             const currentMessage = document.createElement('message-pattern');
             const data = this.data.messages[i];
@@ -95,6 +97,15 @@ class MessageForm extends HTMLElement {
             currentMessage.$time.innerText = data.time;
             this.$message.append(currentMessage);
         }
+        document.dispatchEvent(new CustomEvent('messageFormIsReady', {
+            detail: { name: this.data.name },
+        }));
+        this.style.display = 'block';
+    }
+
+    _onChatContainerIsReady() {
+        this.style.display = 'none';
+        this.$message.innerHTML = '';
     }
 }
 

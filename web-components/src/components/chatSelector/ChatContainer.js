@@ -24,6 +24,8 @@ class ChatContainer extends HTMLElement {
 
         document.addEventListener('DOMContentLoaded', this._onDOMLoaded.bind(this));
         document.addEventListener('NewChat', this._onNewChat.bind(this));
+        document.addEventListener('messageFormIsReady', this._onMessageFormReady.bind(this));
+        document.addEventListener('backToChatSelector', this._onBackToChatSelector.bind(this));
     }
 
     _onDOMLoaded() {
@@ -49,6 +51,26 @@ class ChatContainer extends HTMLElement {
         chat.$time.innerText = data.lastMessageTime;
         chat.$lastMessage.innerText = data.lastMessage;
         this.$container.append(chat);
+    }
+
+    _onMessageFormReady() {
+        this.style.display = 'none';
+        this.$container.innerHTML = '';
+    }
+
+    _onBackToChatSelector() {
+        const chats = JSON.parse(localStorage.getItem('chats'));
+        for (let i = 0; i < chats.length; i += 1) {
+            const chat = document.createElement('chat-item');
+            chat.key = chats[i].key;
+            chat.$name.innerText = chats[i].name;
+            const data = JSON.parse(localStorage.getItem(chats[i].key));
+            chat.$time.innerText = data.lastMessageTime;
+            chat.$lastMessage.innerText = data.lastMessage;
+            this.$container.append(chat);
+        }
+        document.dispatchEvent(new Event('chatContainerIsReady'));
+        this.style.display = 'block';
     }
 }
 
