@@ -30,6 +30,7 @@ class ChatContainer extends HTMLElement {
 
     _onDOMLoaded() {
         const chats = JSON.parse(localStorage.getItem('chats'));
+        if (chats === null) return;
         for (let i = 0; i < chats.length; i += 1) {
             const chat = document.createElement('chat-item');
             chat.key = chats[i].key;
