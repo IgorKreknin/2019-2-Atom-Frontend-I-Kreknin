@@ -4,6 +4,7 @@ const path = require('path');
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpaPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
@@ -54,6 +55,15 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.(svg)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "img/[name].[ext]",
+                    }
+                }
+            },
         ],
     },
     plugins: [
@@ -62,7 +72,11 @@ module.exports = {
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',
-            template: './index.html'
-        })
+            template: './index.html',
+        }),
+        new CopyWebpaPlugin([{
+            from: './img',
+            to: 'img',
+        }])
     ]
 };
