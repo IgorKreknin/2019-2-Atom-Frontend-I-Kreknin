@@ -3,8 +3,14 @@ template.innerHTML = `
     <style>
         .chat-pattern {
             display: flex;
-            margin: 5px;
+            padding: 5px;
             cursor: pointer;
+        }
+        .chat-pattern :hover {
+            background-color: #f3e5f5;
+        }
+        .chat-pattern :active {
+            box-shadow: 0em 0.2em 5px rgba(122,122,122,0.4);
         }
         .description {
             display: flex;
@@ -52,9 +58,13 @@ template.innerHTML = `
             flex: 1 1 auto;
             width: calc(100% - 60px);
             border-bottom: 1px solid #e5e5e5;
-            margin-right: 15px;
+            border-radius: 5px;
             margin-left: 15px;
+            padding-right: 15px;
             padding-bottom: 5px;
+        }
+        .chat-info :active {
+            box-shadow: none;
         }
     </style>
     <div class="chat-pattern">
