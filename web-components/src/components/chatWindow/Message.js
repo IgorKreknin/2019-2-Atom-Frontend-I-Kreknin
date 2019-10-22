@@ -6,6 +6,7 @@ template.innerHTML = `
             background: #f3e5f5;
             margin: 5px;
             border-radius: 10px;
+            animation: swith 1s 1;
         }
 
         .message-text {
@@ -18,6 +19,12 @@ template.innerHTML = `
             bottom: 0px;
             text-align: right;
             font-size: 10px;
+        }
+        
+        @keyframes swith {
+            0% {
+                opacity: 0;
+            }
         }
     </style>
     <div class="message">
