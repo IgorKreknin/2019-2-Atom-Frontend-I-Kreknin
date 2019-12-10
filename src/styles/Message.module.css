@@ -1,25 +1,28 @@
+/* stylelint-disable plugin/no-unsupported-browser-features,
+a11y/media-prefers-reduced-motion  */
 .message {
-    padding: 5px 10px 5px 10px;
-    background: #f3e5f5;
-    margin: 5px;
-    border-radius: 10px;
-    animation: swith 1s 1;
+  padding: 5px 10px 5px 10px;
+  background: rgba(243, 229, 245, 1);
+  margin: 5px;
+  border-radius: 10px;
+  animation: swith 1s 1;
 }
 
 .messageText {
-    word-break: break-all;
-    text-align: left;
+  word-break: break-all;
+  text-align: left;
 }
 
 .messageTime {
-    color: #898989;
-    bottom: 0px;
-    text-align: right;
-    font-size: 10px;
+  color: rgba(137, 137, 137, 1);
+  bottom: 0.001px;
+  text-align: right;
+  font-size: 10px;
 }
 
 @keyframes swith {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 }
+/* stylelint-enable  */

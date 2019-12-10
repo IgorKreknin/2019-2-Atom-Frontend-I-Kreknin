@@ -1,71 +1,78 @@
+/* stylelint-disable plugin/no-unsupported-browser-features  */
 .header {
-    display: flex;
-    position: fixed;
-    top: 0px;
-    height: 60px;
-    width: 100%;
-    background: #8e24aa;
+  display: flex;
+  position: fixed;
+  top: 0.0001px;
+  height: 60px;
+  width: 100%;
+  background: rgba(142, 36, 170, 1);
 }
+
 .title {
-    flex: 1 1 auto;
-    display: flex;
-    margin-left: 20px;
-
+  flex: 1 1 auto;
+  display: flex;
+  margin-left: 20px;
 }
+
 .name {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    font-size: 22px;
-    color: white;
-    margin-left: 20px;
-
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  color: rgb(255, 255, 255);
+  margin-left: 20px;
 }
+
 .menu {
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
+
 .back {
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
-.photo {
-    flex: 0 1 auto;
-    background-color: #ffd54f;
-    height: 50px;
-    width: 50px;
-    border-radius: 30px;
-    border: 1px solid #e5e5e5;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0;
-    margin-right: 0;
-}
-.search {
-    display: none;
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
 
+.photo {
+  flex: 0 1 auto;
+  background-color: rgba(255, 213, 79, 1);
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  border: 1px solid rgba(229, 229, 229, 1);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 0;
 }
+
+.search {
+  display: none;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
 .burger {
-    display: none;
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+  display: none;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
+
 .confirm {
-    display: none;
+  display: none;
 }
+
 .icon {
-    height: 35%;
-    width: 35%;
-    margin: 32.5%;
+  height: 35%;
+  width: 35%;
+  margin: 32.5%;
 }
+/* stylelint-enable  */

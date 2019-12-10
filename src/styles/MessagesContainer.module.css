@@ -1,35 +1,38 @@
-FormInput {
-    width: 100%;
+/* stylelint-disable plugin/no-unsupported-browser-features,
+selector-type-no-unknown  */
+forminput {
+  width: 100%;
 }
 
 .result {
-    display: flex;
-    flex-flow: column wrap-reverse;
-    justify-content: flex-end;
-    align-items: flex-start;
-    align-content: flex-start;
-    margin-top: 50px;
-    margin-bottom: 46px;
-    min-height: calc(100vh - 96px);
-}
+  display: flex;
+  flex-flow: column wrap-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin-top: 50px;
+  margin-bottom: 46px;
+  min-height: calc(100vh - 96px);
 
-.result::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
+  }
 }
 
-Message {
-    flex: 0 1 auto;
-    max-width: 70%;
+message {
+  flex: 0 1 auto;
+  max-width: 70%;
 }
 
-input[type=submit] {
-    visibility: collapse;
+input[type='submit'] {
+  visibility: collapse;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .show {
-    display: block;
+  display: block;
 }
+/* stylelint-enable  */

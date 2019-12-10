@@ -1,57 +1,65 @@
+/* stylelint-disable plugin/no-unsupported-browser-features  */
 .header {
-    display: flex;
-    position: fixed;
-    top: 0px;
-    height: 60px;
-    width: 100%;
-    background: #8e24aa;
+  display: flex;
+  position: fixed;
+  top: 0.001px;
+  height: 60px;
+  width: 100%;
+  background: rgba(142, 36, 170, 1);
 }
+
 .title {
-    flex: 1 1 auto;
-    display: flex;
-    margin-left: 20px;
-
+  flex: 1 1 auto;
+  display: flex;
+  margin-left: 20px;
 }
+
 .name {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    font-size: 22px;
-    color: white;
-    margin-left: 20px;
-
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  color: rgb(255, 255, 255);
+  margin-left: 20px;
 }
+
 .search {
-    display: none;
+  display: none;
+}
 
-}
 .burger {
-    display: none;
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+  display: none;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
+
 .menu {
-    display: none;
+  display: none;
 }
+
 .back {
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
+
 .photo {
-    display: none;
+  display: none;
 }
+
 .confirm {
-    flex: 0 1 auto;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
+
 .icon {
-    height: 35%;
-    width: 35%;
-    margin: 32.5%;
+  height: 35%;
+  width: 35%;
+  margin: 32.5%;
 }
+/* stylelint-enable  */
