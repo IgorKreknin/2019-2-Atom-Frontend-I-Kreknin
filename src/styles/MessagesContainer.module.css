@@ -1,5 +1,3 @@
-/* stylelint-disable plugin/no-unsupported-browser-features,
-selector-type-no-unknown  */
 forminput {
   width: 100%;
 }
@@ -35,4 +33,3 @@ input[type='submit'] {
 .show {
   display: block;
 }
-/* stylelint-enable  */

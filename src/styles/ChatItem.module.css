@@ -1,4 +1,3 @@
-/* stylelint-disable plugin/no-unsupported-browser-features  */
 .chatPattern {
   display: flex;
   padding: 5px;
@@ -77,4 +76,3 @@
     box-shadow: none;
   }
 }
-/* stylelint-enable  */

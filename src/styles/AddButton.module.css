@@ -1,7 +1,3 @@
-/* stylelint-disable plugin/no-unsupported-browser-features,
-property-no-vendor-prefix, plugin/no-low-performance-animation-properties,
-plugin/stylelint-no-indistinguishable-colors, a11y/media-prefers-reduced-motion
-  */
 .addButton {
   display: block;
   position: fixed;
@@ -17,9 +13,11 @@ plugin/stylelint-no-indistinguishable-colors, a11y/media-prefers-reduced-motion
 
   &:focus {
     animation: none;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
     transform: scale(1.2);
+  }
+
+  @media (prefers-reduced-motion) {
+    animation: none;
   }
 }
 
@@ -31,21 +29,17 @@ plugin/stylelint-no-indistinguishable-colors, a11y/media-prefers-reduced-motion
 
 @keyframes pulse {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
   }
 
   70% {
-    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
   }
 
   100% {
-    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
-/* stylelint-enable  */
 
 .hide {
   display: none;

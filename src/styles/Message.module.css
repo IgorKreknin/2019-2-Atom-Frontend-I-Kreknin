@@ -1,11 +1,13 @@
-/* stylelint-disable plugin/no-unsupported-browser-features,
-a11y/media-prefers-reduced-motion  */
 .message {
   padding: 5px 10px 5px 10px;
   background: rgba(243, 229, 245, 1);
   margin: 5px;
   border-radius: 10px;
   animation: swith 1s 1;
+
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
 }
 
 .messageText {
@@ -25,4 +27,3 @@ a11y/media-prefers-reduced-motion  */
     opacity: 0;
   }
 }
-/* stylelint-enable  */
