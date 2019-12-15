@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { CustomHeader } from './components/CustomHeader.jsx'
 import { ChatsContainer } from './components/ChatsContainer.jsx'
 import { AddButton } from './components/AddButton.jsx'

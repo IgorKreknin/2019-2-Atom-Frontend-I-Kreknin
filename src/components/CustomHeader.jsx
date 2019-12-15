@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import styles from '../styles/Header.module.css'
 import burger from '../assets/burger.svg'
 import back from '../assets/back.svg'
@@ -26,10 +26,6 @@ export class CustomHeader extends React.Component {
   }
 
   render() {
-    if (localStorage.getItem(window.location.search.replace('?', '')) != null) {
-      this.state = { name: JSON.parse(localStorage.getItem(window.location.search.replace('?', ''))).name }
-    }
-
     return (
       <div className={styles.header}>
         <Switch>
