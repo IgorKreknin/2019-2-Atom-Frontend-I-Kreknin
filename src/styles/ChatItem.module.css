@@ -2,6 +2,7 @@
   display: flex;
   padding: 5px;
   cursor: pointer;
+  text-decoration: none;
 
   &:focus {
     background-color: rgba(243, 229, 245, 1);
