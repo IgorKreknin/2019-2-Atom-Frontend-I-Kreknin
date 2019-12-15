@@ -1,0 +1,78 @@
+.chatPattern {
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+
+  &:focus {
+    background-color: rgba(243, 229, 245, 1);
+  }
+
+  &:active {
+    box-shadow: 0.001em 0.2em 5px rgba(122, 122, 122, 0.4);
+  }
+}
+
+.description {
+  display: flex;
+  min-height: 30px;
+  width: 100%;
+}
+
+.message {
+  display: flex;
+  min-height: 30px;
+  width: 100%;
+}
+
+.name {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-end;
+  font-size: 18px;
+}
+
+.time {
+  flex: 0 1 auto;
+  color: rgba(155, 155, 155, 1);
+  display: flex;
+  align-items: flex-end;
+  font-size: 15px;
+}
+
+.lastMessage {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  color: rgba(155, 155, 155, 1);
+}
+
+.messageStatus {
+  flex: 0 1 auto;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+}
+
+.photo {
+  flex: 0 1 auto;
+  background-color: rgba(255, 213, 79, 1);
+  height: 60px;
+  width: 60px;
+  margin: 0;
+  border-radius: 30px;
+  border: 1px solid rgba(229, 229, 229, 1);
+}
+
+.chatInfo {
+  flex: 1 1 auto;
+  width: calc(100% - 60px);
+  border-bottom: 1px solid rgba(229, 229, 229, 1);
+  border-radius: 5px;
+  margin-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+
+  &:active {
+    box-shadow: none;
+  }
+}

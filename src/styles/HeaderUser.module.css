@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0.001px;
+  height: 60px;
+  width: 100%;
+  background: rgba(142, 36, 170, 1);
+}
+
+.title {
+  flex: 1 1 auto;
+  display: flex;
+  margin-left: 20px;
+}
+
+.name {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  color: rgb(255, 255, 255);
+  margin-left: 20px;
+}
+
+.search {
+  display: none;
+}
+
+.burger {
+  display: none;
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+}
+
+.back {
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.photo {
+  display: none;
+}
+
+.confirm {
+  flex: 0 1 auto;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.icon {
+  height: 35%;
+  width: 35%;
+  margin: 32.5%;
+}

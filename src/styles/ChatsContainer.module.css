@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-flow: column-reverse;
+  justify-content: flex-end;
+  margin-top: 60px;
+  min-height: calc(100vh - 60px);
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.hide {
+  display: none;
+}

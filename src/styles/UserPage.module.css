@@ -1,0 +1,54 @@
+.userPageContainer {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.profilePhoto {
+  border-radius: 40px;
+  height: 80px;
+  width: 80px;
+  background-color: rgba(206, 147, 216, 1);
+  margin-bottom: 50px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.profileAboutLine {
+  text-align: left;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 10px;
+}
+
+.profileAboutLineDataContainer {
+  border-bottom: 5px solid rgba(158, 158, 158, 1);
+  background-color: rgba(237, 237, 237, 1);
+  padding: 10px;
+}
+
+.profileAboutLineName {
+  color: rgba(127, 127, 127, 1);
+  font-size: 100%;
+  margin-bottom: 5px;
+}
+
+.profileAboutLineData {
+  font-size: 150%;
+  margin-top: 5px;
+  width: 100%;
+  border: none;
+  background-color: rgba(237, 237, 237, 1);
+  position: relative;
+  bottom: 0;
+  height: auto;
+  padding: 0;
+}
+
+.profileAboutLineTitle {
+  color: rgba(127, 127, 127, 1);
+  margin-left: 10px;
+}

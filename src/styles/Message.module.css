@@ -1,0 +1,29 @@
+.message {
+  padding: 5px 10px 5px 10px;
+  background: rgba(243, 229, 245, 1);
+  margin: 5px;
+  border-radius: 10px;
+  animation: swith 1s 1;
+
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
+}
+
+.messageText {
+  word-break: break-all;
+  text-align: left;
+}
+
+.messageTime {
+  color: rgba(137, 137, 137, 1);
+  bottom: 0.001px;
+  text-align: right;
+  font-size: 10px;
+}
+
+@keyframes swith {
+  0% {
+    opacity: 0;
+  }
+}

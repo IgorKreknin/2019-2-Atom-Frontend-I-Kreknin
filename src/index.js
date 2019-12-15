@@ -1,15 +1,19 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import store from './store'
-import Routes from './routes'
+import { CustomHeader } from './components/CustomHeader.jsx'
+import { ChatsContainer } from './components/ChatsContainer.jsx'
+import { AddButton } from './components/AddButton.jsx'
+import { MessagesContainer } from './components/MessagesContainer.jsx'
 import './styles/globalStyles.css'
 import * as serviceWorker from './utils/serviceWorker'
 
 render(
-  <Provider store={store}>
-    <Routes />
-  </Provider>,
+  <div>
+    <CustomHeader />
+    <ChatsContainer />
+    <MessagesContainer />
+    <AddButton />
+  </div>,
   document.getElementById('root'),
 )
 // If you want your app to work offline and load faster, you can change

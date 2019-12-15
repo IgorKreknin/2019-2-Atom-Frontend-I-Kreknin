@@ -1,0 +1,35 @@
+forminput {
+  width: 100%;
+}
+
+.result {
+  display: flex;
+  flex-flow: column wrap-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin-top: 50px;
+  margin-bottom: 46px;
+  min-height: calc(100vh - 96px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+message {
+  flex: 0 1 auto;
+  max-width: 70%;
+}
+
+input[type='submit'] {
+  visibility: collapse;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}

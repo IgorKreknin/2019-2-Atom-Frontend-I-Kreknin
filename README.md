@@ -1,1 +1,1 @@
-# 2019-2-Atom-Frontend-I-Kreknin
+# Atom Mail 2019 M Komitsky
