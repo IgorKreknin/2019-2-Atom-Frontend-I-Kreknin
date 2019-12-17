@@ -1,0 +1,14 @@
+.addButton {
+  display: block;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: rgba(255, 213, 79, 1);
+  cursor: pointer;
+  box-shadow: 0.0001em 0.2em 5px rgba(122, 122, 122, 0.4);
+  animation: pulse 2s infinite;
+}
+

@@ -1,0 +1,47 @@
+.main {
+	display: inline;
+}
+
+.mainAbout {
+	width: 75%
+}
+
+.mainAboutCity {
+}
+
+.mainAboutLocation {
+
+}
+
+.mainTemperature {
+	width: 25%;
+}
+
+.mainTemperatureIcon {
+
+}
+
+.mainTemperatureText {
+
+}
+
+.footer {
+	display: inline;
+}
+
+.footerAbout {
+
+}
+
+.footerTemperature {
+
+}
+
+.component {
+	width: calc(100% - 20px);
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	background: white;
+	height: 100px;
+}
