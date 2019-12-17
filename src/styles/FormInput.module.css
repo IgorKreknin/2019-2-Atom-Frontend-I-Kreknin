@@ -2,13 +2,55 @@ input {
   border: 1px solid rgba(229, 229, 229, 1);
   padding-left: 12px;
   outline: none;
-  width: calc(100vw - 14px);
+  width: calc(100vw - 102px);
   bottom: 2px;
+  left: 0.001px;
   position: fixed;
   height: 40px;
   font-size: 16px;
 
   @media handheld {
-    width: calc(100% - 14px);
+    width: calc(100% - 102px);
   }
+}
+
+.addPhoto {
+  border: 1px solid rgba(229, 229, 229, 1);
+  height: 42px;
+  width: 42px;
+  position: fixed;
+  bottom: 2px;
+  right: 0.001px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.addAudio {
+  border: 1px solid rgba(229, 229, 229, 1);
+  height: 32px;
+  width: 32px;
+  position: fixed;
+  bottom: 2px;
+  right: 42px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 5px;
+}
+
+.inputFileForm {
+  display: none;
+}
+
+.pinnedFilesForm {
+  width: 100%;
+  display: inline-block;
+  position: fixed;
+  bottom: 44px;
+}
+
+.pinnedFile {
+  height: 100px;
+  margin: 5px;
+  border: 1px solid rgba(229, 229, 229, 1);
+  border-radius: 5px;
 }

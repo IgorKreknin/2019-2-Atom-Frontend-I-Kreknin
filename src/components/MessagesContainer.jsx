@@ -21,7 +21,11 @@ export class MessagesContainer extends React.Component {
     let rowMessages = JSON.parse(localStorage.getItem(this.state.about.key)).messages
 
     for (let i = 0; i < rowMessages.length; i++) {
-      trueMessages.push(<Message message={{ text: rowMessages[i].text, time: rowMessages[i].time }} />)
+      trueMessages.push(
+        <Message
+          message={{ text: rowMessages[i].text, time: rowMessages[i].time, pinnedFiles: rowMessages[i].pinnedFiles }}
+        />,
+      )
     }
 
     let localState = this.state
@@ -34,13 +38,17 @@ export class MessagesContainer extends React.Component {
     //console.log(event);
 
     let data = JSON.parse(localStorage.getItem(this.state.about.key))
-    data.messages.push({ text: event.text, time: event.time, name: 'User' })
+    data.messages.push({ text: event.text, time: event.time, name: 'User', pinnedFiles: event.pinnedFiles })
     data.lastMessage = event.text
     data.lastMessageTime = event.time
     localStorage.setItem(this.state.about.key, JSON.stringify(data))
 
     let localState = this.state
-    localState.messages.push(<Message message={{ text: event.text, time: event.time }} />)
+    localState.messages.push(
+      <Message
+        message={{ text: event.text, time: event.time, pinnedFiles: event.pinnedFiles, audioURL: event.audioURL }}
+      />,
+    )
     this.setState(localState)
   }
 

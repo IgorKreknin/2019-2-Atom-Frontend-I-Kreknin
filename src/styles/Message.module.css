@@ -4,10 +4,30 @@
   margin: 5px;
   border-radius: 10px;
   animation: swith 1s 1;
+  max-width: 25%;
 
   @media (prefers-reduced-motion) {
     animation: none;
   }
+}
+
+.messageImagesContainer {
+  margin-left: 3px;
+  margin-right: 3px;
+  width: calc(100% - 6px);
+}
+
+.messageImage {
+  width: 100%;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.messageAudio {
+  width: 101%;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-radius: 10px;
 }
 
 .messageText {
