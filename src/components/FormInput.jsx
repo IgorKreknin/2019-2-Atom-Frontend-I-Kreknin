@@ -3,6 +3,8 @@ import styles from '../styles/FormInput.module.css'
 import '../styles/FormInput.module.css'
 import camera from '../assets/camera.svg'
 import microphone from '../assets/microphone.svg'
+import redMicrophone from '../assets/microphone-red.svg'
+import location from '../assets/location.svg'
 
 export default class FormInput extends React.Component {
   constructor() {
@@ -10,6 +12,7 @@ export default class FormInput extends React.Component {
     this.state = {
       value: '',
       placeholder: 'Сообщение',
+      microphone: microphone,
       pinnedFiles: [],
       pinnedFilesURL: [],
       recordingAudio: false,
@@ -22,6 +25,7 @@ export default class FormInput extends React.Component {
     this._onAddPhotoClick = this._onAddPhotoClick.bind(this)
     this._onAddPhotoChange = this._onAddPhotoChange.bind(this)
     this._onAddAudioClick = this._onAddAudioClick.bind(this)
+    this._onLocationClick = this._onLocationClick.bind(this)
     window.addEventListener('drop', this._onDrop.bind(this))
   }
 
@@ -56,6 +60,13 @@ export default class FormInput extends React.Component {
     let files = event.target.files
 
     for (let i = 0; i < files.length; i++) {
+      fetch('https://tt-front.now.sh/upload', {
+        method: 'POST',
+        body: {
+          image: files[i],
+        },
+      })
+
       let src = window.URL.createObjectURL(files[i])
       console.log(src)
       localState.pinnedFiles.push(<img className={styles.pinnedFile} src={src} alt="" />)
@@ -63,7 +74,6 @@ export default class FormInput extends React.Component {
     }
 
     this.setState(localState)
-    console.log(this.state)
   }
 
   _onSubmit(e) {
@@ -75,6 +85,7 @@ export default class FormInput extends React.Component {
       currentTime.getMinutes() > 9 ? currentTime.getMinutes() : `0${currentTime.getMinutes()}`
     }`
     event.pinnedFiles = this.state.pinnedFilesURL
+    event.route = window.location.search.replace('?', '')
     this.setState({ value: '', pinnedFiles: [], pinnedFilesURL: [] })
     document.dispatchEvent(event)
   }
@@ -89,6 +100,7 @@ export default class FormInput extends React.Component {
             let localState = this.state
             localState.recordingAudio = true
             localState.placeholder = 'Запись'
+            localState.microphone = redMicrophone
             localState.mediaRecorder = mediaRecorder
             this.setState(localState)
 
@@ -105,6 +117,14 @@ export default class FormInput extends React.Component {
               'stop',
               function() {
                 const blob = new Blob(this.state.chunks, { type: this.state.mediaRecorder.mimeType })
+
+                fetch('https://tt-front.now.sh/upload', {
+                  method: 'POST',
+                  body: {
+                    audio: blob,
+                  },
+                })
+
                 let src = URL.createObjectURL(blob)
                 console.log(src)
 
@@ -113,6 +133,7 @@ export default class FormInput extends React.Component {
                 localState.mediaRecorder = undefined
                 localState.chunks = []
                 localState.placeholder = 'Сообщение'
+                localState.microphone = microphone
                 this.setState(localState)
 
                 let event = new Event('MessageSent')
@@ -121,6 +142,7 @@ export default class FormInput extends React.Component {
                 event.time = `${currentTime.getHours() > 9 ? currentTime.getHours() : `0${currentTime.getHours()}`}:${
                   currentTime.getMinutes() > 9 ? currentTime.getMinutes() : `0${currentTime.getMinutes()}`
                 }`
+                event.route = window.location.search.replace('?', '')
                 document.dispatchEvent(event)
               }.bind(this),
             )
@@ -136,6 +158,27 @@ export default class FormInput extends React.Component {
     }
   }
 
+  _onLocationClick() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let event = new Event('MessageSent')
+        event.text =
+          'Моя геолокация:\n https://www.openstreetmap.org/#map=18/' +
+          position.coords.latitude +
+          '/' +
+          position.coords.longitude
+        let currentTime = new Date()
+        event.time = `${currentTime.getHours() > 9 ? currentTime.getHours() : `0${currentTime.getHours()}`}:${
+          currentTime.getMinutes() > 9 ? currentTime.getMinutes() : `0${currentTime.getMinutes()}`
+        }`
+        event.route = window.location.search.replace('?', '')
+        document.dispatchEvent(event)
+      })
+    } else {
+      alert('Geolocation error')
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this._onSubmit}>
@@ -147,7 +190,8 @@ export default class FormInput extends React.Component {
           value={this.state.value}
           onChange={this._onChange}
         />
-        <img src={microphone} className={styles.addAudio} onClick={this._onAddAudioClick} alt="" />
+        <img src={location} className={styles.location} onClick={this._onLocationClick} />
+        <img src={this.state.microphone} className={styles.addAudio} onClick={this._onAddAudioClick} alt="" />
         <img src={camera} className={styles.addPhoto} onClick={this._onAddPhotoClick} alt="" />
         <input
           type="file"

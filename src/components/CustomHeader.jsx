@@ -25,6 +25,12 @@ export class CustomHeader extends React.Component {
     this.setState(localState)
   }
 
+  componentDidMount() {
+    if (JSON.parse(localStorage.getItem(window.location.search.replace('?', '')))) {
+      this.setState({ name: JSON.parse(localStorage.getItem(window.location.search.replace('?', ''))).name })
+    }
+  }
+
   render() {
     return (
       <div className={styles.header}>

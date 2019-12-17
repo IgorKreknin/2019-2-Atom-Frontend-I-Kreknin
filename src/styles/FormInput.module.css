@@ -2,7 +2,7 @@ input {
   border: 1px solid rgba(229, 229, 229, 1);
   padding-left: 12px;
   outline: none;
-  width: calc(100vw - 102px);
+  width: calc(100vw - 90px);
   bottom: 2px;
   left: 0.001px;
   position: fixed;
@@ -10,7 +10,7 @@ input {
   font-size: 16px;
 
   @media handheld {
-    width: calc(100% - 102px);
+    width: calc(100% - 144px);
   }
 }
 
@@ -27,14 +27,13 @@ input {
 
 .addAudio {
   border: 1px solid rgba(229, 229, 229, 1);
-  height: 32px;
-  width: 32px;
+  height: 42px;
+  width: 42px;
   position: fixed;
   bottom: 2px;
   right: 42px;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 1);
-  padding: 5px;
 }
 
 .inputFileForm {
@@ -53,4 +52,16 @@ input {
   margin: 5px;
   border: 1px solid rgba(229, 229, 229, 1);
   border-radius: 5px;
+}
+
+.location {
+  border: 1px solid rgba(229, 229, 229, 1);
+  height: 32px;
+  width: 32px;
+  position: fixed;
+  padding: 5px;
+  bottom: 2px;
+  right: 84px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 1);
 }
