@@ -184,6 +184,7 @@ export default class FormInput extends React.Component {
       <form onSubmit={this._onSubmit}>
         <div className={styles.pinnedFilesForm}>{this.state.pinnedFiles}</div>
         <input
+          className={styles.myInput}
           type="text"
           name="message"
           placeholder={this.state.placeholder}

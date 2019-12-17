@@ -27,6 +27,12 @@
   margin: 25%;
 }
 
+.iFrame {
+  position: fixed;
+  right: 30px;
+  bottom: 90px;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);

@@ -7,36 +7,14 @@ export class AddButton extends React.Component {
     super()
     this.state = {
       outerStyle: styles.addButton,
+      iframe: <iframe src="api/chat/new/" height="250px" />,
     }
 
     document.addEventListener('Hide', this._onHide.bind(this))
     document.addEventListener('ShowChats', this._onShowChats.bind(this))
   }
 
-  _onClick() {
-    const name = prompt('Название нового чата: ')
-    if (name === null || name === '') return
-    const date = new Date()
-    const key = `${date.getFullYear()}${date.getMonth()}${date.getDay()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`
-    const chatAbout = {
-      key,
-      name,
-    }
-    const chat = {
-      messages: [],
-      lastMessage: 'Этот чат пока пуст :(',
-      lastMessageTime: `${date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`}:${
-        date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`
-      }`.replace('\n', ''),
-      name,
-    }
-    localStorage.setItem(key, JSON.stringify(chat))
-    let chats = JSON.parse(localStorage.getItem('chats'))
-    if (chats === null) chats = []
-    chats.push(chatAbout)
-    localStorage.setItem('chats', JSON.stringify(chats))
-    document.dispatchEvent(new Event('NewChat'))
-  }
+  _onClick() {}
 
   _onHide() {
     let localState = this.state
@@ -52,9 +30,12 @@ export class AddButton extends React.Component {
 
   render() {
     return (
-      <span className={this.state.outerStyle}>
-        <img src={button} className={styles.pen} onClick={this._onClick} alt="" />
-      </span>
+      <div>
+        <div className={styles.iFrame}>{this.state.iframe}</div>
+        <span className={this.state.outerStyle}>
+          <img src={button} className={styles.pen} onClick={this._onClick} alt="" />
+        </span>
+      </div>
     )
   }
 }

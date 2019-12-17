@@ -25,10 +25,12 @@ export class ChatItem extends React.Component {
 
   fillState() {
     let data = JSON.parse(localStorage.getItem(this.state.key))
-    let localState = this.state
-    localState.lastMessage = data.lastMessage
-    localState.lastMessageTime = data.lastMessageTime
-    this.setState(localState)
+    if (data) {
+      let localState = this.state
+      localState.lastMessage = data.lastMessage
+      localState.lastMessageTime = data.lastMessageTime
+      this.setState(localState)
+    }
   }
 
   _onClick() {
