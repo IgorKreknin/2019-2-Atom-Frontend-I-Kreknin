@@ -3,7 +3,7 @@ node_js:
   - "stable"
 
 before_install:
-  - cd exam/exam
+  - cd web-components
 
 script:
   - npm run test
@@ -13,7 +13,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: exam/exam/build
+  local_dir: web-components/build
   on:
     branch:
       - master
