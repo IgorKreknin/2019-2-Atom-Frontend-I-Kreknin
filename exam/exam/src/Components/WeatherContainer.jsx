@@ -18,10 +18,10 @@ export default class WeatherContainer extends React.Component {
 		navigator.geolocation.getCurrentPosition(function(position){
 			let src = "https://mars.priver.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=b6907d289e10d714a6e88b30761fae22";
 			fetch(src)
-				.then(function(response){return response.json()}.bind(this))
+				.then(function(response){return response.json()})
 				.then(function(data){
 					console.log(data);
-				}.bind(this))
+				})
 		}.bind(this))
 	}
 
