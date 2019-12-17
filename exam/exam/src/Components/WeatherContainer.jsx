@@ -22,7 +22,7 @@ export default class WeatherContainer extends React.Component {
 				.then(function(data){
 					console.log(data);
 				})
-		}.bind(this))
+		})
 	}
 
 	_onSubmit(event){
