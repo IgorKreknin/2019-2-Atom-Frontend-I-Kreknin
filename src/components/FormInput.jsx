@@ -32,7 +32,7 @@ export default class FormInput extends React.Component {
 
     for (var i = 0; i < event.dataTransfer.files.length; i++) {
       let src = window.URL.createObjectURL(event.dataTransfer.files[i])
-      localState.pinnedFiles.push(<img className={styles.pinnedFile} src={src} />)
+      localState.pinnedFiles.push(<img className={styles.pinnedFile} src={src} alt="" />)
       localState.pinnedFilesURL.push(src)
     }
 
@@ -58,7 +58,7 @@ export default class FormInput extends React.Component {
     for (let i = 0; i < files.length; i++) {
       let src = window.URL.createObjectURL(files[i])
       console.log(src)
-      localState.pinnedFiles.push(<img className={styles.pinnedFile} src={src} />)
+      localState.pinnedFiles.push(<img className={styles.pinnedFile} src={src} alt="" />)
       localState.pinnedFilesURL.push(src)
     }
 
