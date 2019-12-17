@@ -190,7 +190,7 @@ export default class FormInput extends React.Component {
           value={this.state.value}
           onChange={this._onChange}
         />
-        <img src={location} className={styles.location} onClick={this._onLocationClick} />
+        <img src={location} className={styles.location} onClick={this._onLocationClick} alt="" />
         <img src={this.state.microphone} className={styles.addAudio} onClick={this._onAddAudioClick} alt="" />
         <img src={camera} className={styles.addPhoto} onClick={this._onAddPhotoClick} alt="" />
         <input
